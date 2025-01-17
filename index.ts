@@ -1,19 +1,27 @@
-import express from "express";
 import authRouter from "./routes/auth";
+import dbConnection from "./db/config";
+import express from "express";
+import cors from "cors";
 
-//Crear el servidor de express
+// Create express server
 const app = express();
 
-// Directorio publico
+// Database
+dbConnection();
+
+// CORS
+app.use(cors());
+
+// Public directory
 app.use(express.static("public"));
 
-// Lectura y parseo del body
+// Read and parse body
 app.use(express.json());
 
-// Rutas
+// Routes
 app.use("/api/auth", authRouter);
 
-// Escuchar peticiones
+// Listen requests
 const port = process.env.PORT;
 
 app.listen(port, () => {

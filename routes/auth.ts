@@ -7,6 +7,7 @@ import express from "express";
 import { check } from "express-validator";
 import { createUser, loginUser, renewToken } from "../controllers/auth";
 import { fieldsValidator } from "../middlewares/fields-validator";
+import validJWT from "../middlewares/jwt-validator";
 
 const router = express.Router();
 
@@ -36,6 +37,6 @@ router.post(
   loginUser
 );
 
-router.get("/renew", renewToken);
+router.get("/renew", validJWT, renewToken);
 
 export default router;
