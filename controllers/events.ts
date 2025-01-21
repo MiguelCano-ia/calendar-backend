@@ -83,7 +83,7 @@ export const updateEvent = async (req: RequestWithUser, res: Response) => {
 };
 
 export const deleteEvent = async (req: RequestWithUser, res: Response) => {
-  const eventId = Event.findById(req.params.id);
+  const eventId = req.params.id;
 
   try {
     const event = await Event.findById(eventId);
