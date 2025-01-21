@@ -1,9 +1,11 @@
-import { isValid } from "date-fns";
+import { getTime, isValid } from "date-fns";
 
-const isDate = (dateValue: unknown) => {
+const isDate = (dateValue: string | number | Date) => {
   if (!dateValue) return false;
 
-  const date = isValid(dateValue); // retorna true o false
+  const getMiliseconds = getTime(new Date(dateValue));
+
+  const date = isValid(getMiliseconds); // retorna true o false
   return date;
 };
 
