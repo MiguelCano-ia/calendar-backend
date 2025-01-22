@@ -5,8 +5,7 @@ import mongoose from "mongoose";
 import User from "../models/User";
 
 export const getEvents = async (req: RequestWithUser, res: Response) => {
-  const user = await User.findById(req.auth?.uid);
-  const events = await Event.find({ user }).populate("user", "name");
+  const events = await Event.find().populate("user", "name");
 
   res.status(200).json({
     ok: true,

@@ -33,7 +33,7 @@ export const createUser = async (req: Request, res: Response) => {
 
     res.status(201).json({
       ok: true,
-      uid: user.id,
+      _id: user.id,
       name: user.name,
       token,
     });
@@ -76,7 +76,7 @@ export const loginUser = async (req: Request, res: Response) => {
 
     res.json({
       ok: true,
-      uid: user.id,
+      _id: user.id,
       name: user.name,
       token,
     });
@@ -96,7 +96,7 @@ export const renewToken = async (req: RequestWithUser, res: Response) => {
 
   res.json({
     ok: true,
-    uid,
+    _id: uid,
     name,
     token,
   });
